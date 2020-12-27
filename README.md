@@ -1,7 +1,6 @@
-/**
- * @author Aayush Chhabra
- * @email aayushgen@gmail.com
- * @create date 2020-12-27 15:30:32
- * @modify date 2020-12-27 15:30:32
- * @desc [description]
- */
+# Author: Aayush Chhabra
+# Email: aayushgen@gmail.com
+
+- Workspace for the files creating while learning Express.js
+- Some section numbers are missing which didn't require any code.
+- Contact the author for more information or collaborations.
