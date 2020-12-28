@@ -9,6 +9,7 @@
   "author": "Aayush Chhabra",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.1.5",
     "express": "^4.17.1",
     "helmet": "^4.3.1"
   }

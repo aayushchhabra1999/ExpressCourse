@@ -57,6 +57,7 @@ app.use(helmet());
 ```
 
 ### **Response**
+
 It is important to set the correct content type before sending a response.
 
 1. `res.send` sends the response back with content-type `text/html`.
@@ -68,6 +69,15 @@ It is important to set the correct content type before sending a response.
 4. `res.end` ends the response without any data.
 
 ### **Request**
+
 1. `req.ip` contains the ip of the requester.
 2. `req.path` contains the path of the requested url.
 3. `req.body` contains key value pairs of data submitted in the request. Default: undefined. Set by body parsing inbuilt middleware like express.json and express.urlencoded
+
+### **SET/GET**
+
+1. `app.set(key, value)` is used to assign a key value pair.
+
+2. `app.get(key)` is used to retrieve the value for a given key.
+
+3. Some specific keys can be used to influence the behavior of the web server. Eg. "view engine"
