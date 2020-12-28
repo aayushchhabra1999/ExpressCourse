@@ -41,9 +41,9 @@ app.use(route, middleware);
 
 ### **Some provided middlewares**
 
-1. `app.json` - takes the json payload coming in, parses it, and adds it to req.body (determined by mime-type)
+1. `express.json` - takes the json payload coming in, parses it, and adds it to req.body (determined by mime-type)
 
-2. `app.urlencoded` - takes the urlencoded payload coming in, parses it, and adds it to req.body (determined by mime-type).
+2. `express.urlencoded` - takes the urlencoded payload coming in, parses it, and adds it to req.body (determined by mime-type).
 
 3. `helmet npm package` provides out of the box middleware to protect against common security vulnerabilities. ALWAYS USE THIS!
 
@@ -55,3 +55,19 @@ application:
 const helmet = require('helmet');
 app.use(helmet());
 ```
+
+### **Response**
+It is important to set the correct content type before sending a response.
+
+1. `res.send` sends the response back with content-type `text/html`.
+
+2. `res.sendFile` sends a file as a response.
+
+3. `res.json (res.jsonp)` sends the response back with content-type `application/json`. Uses JSON.stringify on the parameter passed.
+
+4. `res.end` ends the response without any data.
+
+### **Request**
+1. `req.ip` contains the ip of the requester.
+2. `req.path` contains the path of the requested url.
+3. `req.body` contains key value pairs of data submitted in the request. Default: undefined. Set by body parsing inbuilt middleware like express.json and express.urlencoded
