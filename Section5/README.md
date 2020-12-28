@@ -38,3 +38,20 @@ app.use(route, middleware);
 - `res.locals` is used to pass around variables.
 - It persists for the duration of a given request response cycle.
 - Every piece of middleware will have access to this object.
+
+### **Some provided middlewares**
+
+1. `app.json` - takes the json payload coming in, parses it, and adds it to req.body (determined by mime-type)
+
+2. `app.urlencoded` - takes the urlencoded payload coming in, parses it, and adds it to req.body (determined by mime-type).
+
+3. `helmet npm package` provides out of the box middleware to protect against common security vulnerabilities. ALWAYS USE THIS!
+
+```language
+terminal:
+npm install helmet --save
+
+application:
+const helmet = require('helmet');
+app.use(helmet());
+```
