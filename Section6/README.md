@@ -53,40 +53,24 @@ app.post('/process_login', (req, res, next) {
 ```
 
 ---
+
 ## Query String
 
 1. Query Strings are extra variables added at the end of a url.
 2. This is not a secure form of transmitting data. (Use body with https for that).
 3. '**?**' seperates the path from the query string.
-3. '**&**' seperates the key=value pairs.
+4. '**&**' seperates the key=value pairs.
 
 `req.query` contains the list of all the query strings parsed as key value pairs.
 
+---
 
+## Route Parameters
 
+- Another way to send data through a URL is through named route parameters.
 
+  - Example: `protocol.domain.com/story/:storyID` => Here the `storyID` is a named route parameter.
 
+- To create a named route parameter, prepend the parameter name in the url with a colon operator ,i.e, `:`
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- The named parameter can be accessed at `req.params`. By default, `req.params` is equal to `{}`.

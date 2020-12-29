@@ -51,6 +51,13 @@ app.get('/welcome', (req, res, next) => {
   res.render('welcome', { username: req.cookies.username });
 });
 
+app.get('/story/:storyID', (req, res, next) => {
+  console.log(req.params)
+  res.send(`hello from the ${req.params.storyID}`);
+});
+
+
+
 app.get('/logout', (req, res, next) => {
   res.clearCookie('username');
   res.redirect('/login');
