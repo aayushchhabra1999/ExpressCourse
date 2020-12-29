@@ -30,6 +30,10 @@ app.get('/', (req, res, next) => {
   res.render('home');
 });
 
+app.get('/statement', (req, res, next) => {
+  res.download(path.join(__dirname, 'userStatements', 'BankStatementChequing.png'), 'soCool.png')
+});
+
 app.get('/login', (req, res, next) => {
   console.log(req.query);
   res.render('login');

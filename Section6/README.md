@@ -74,3 +74,34 @@ app.post('/process_login', (req, res, next) {
 - To create a named route parameter, prepend the parameter name in the url with a colon operator ,i.e, `:`
 
 - The named parameter can be accessed at `req.params`. By default, `req.params` is equal to `{}`.
+
+---
+
+## Param method
+
+- `app.param` is used to add callback triggers to name parameters.
+- Syntax: `app.param([name], callback)`
+- Syntax of the callback :
+
+  `callback(req, res, next, value(name), name)`
+
+---
+
+## Response Headers
+
+- `res.set` can be used to set headers on the response sent.
+- Syntax:
+  - `res.set(key, val)`
+  - `res.set({ key1: val1, key2: val2, ...})`
+
+---
+
+## Download
+
+- `res.download` sends a file as an attachment
+- `res.download(path, filename, options, callback)`
+
+  - Under the hood, `res.download` sets the `content-disposition` header to `attachment` and then uses res.sendFile
+  - **NOTE**: If the headers are already sent, you can't send headers again. There is a bool to check whether headers are already sent called `res.headersSent`.
+
+- `res.attachment([filename])` - sets the `content-disposition` header to `attachment`without transmitting the file. (ONLY SETS THE HEADERS.)
