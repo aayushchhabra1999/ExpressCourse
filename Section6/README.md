@@ -105,3 +105,44 @@ app.post('/process_login', (req, res, next) {
   - **NOTE**: If the headers are already sent, you can't send headers again. There is a bool to check whether headers are already sent called `res.headersSent`.
 
 - `res.attachment([filename])` - sets the `content-disposition` header to `attachment`without transmitting the file. (ONLY SETS THE HEADERS.)
+
+---
+
+## Router
+
+1. `express.Router()` creates a router object which allows to modularize the code.
+2. routers behave like good-old middlewares.
+
+#### Example
+
+- Following section describes the main file where the app is defined.
+
+```language
+const express = require('express');
+const app = express();
+
+app.use(express.json());
+
+const baseRouter = require('./theRouter');
+const userRouter = require('./userRouter');
+
+app.use('/', baseRouter);
+app.use('/user', userRouter);
+
+app.listen(3000);
+```
+
+- Following creates a router in a file `'theRouter.js'`
+
+```language
+const express = require('express');
+let router = express.Router();
+
+router.get('/', (req, res, next) => {
+  res.json({
+    msg: 'router works',
+  });
+});
+
+module.exports = router;
+```
