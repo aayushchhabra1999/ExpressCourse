@@ -39,4 +39,20 @@ router.get('/movie/:id', (req, res, next) => {
     });
 });
 
+router.post('/search', (req, res, next) => {
+  const userSearchTerm = encodeURI(req.body.movieSearch);
+  const cat = req.body.cat;
+  const movieUrl = `${apiBaseUrl}/search/${cat}?query=${userSearchTerm}&api_key=${API_KEY}`;
+  axios
+    .get(movieUrl)
+    .then(function (response) {
+      res.render('index', {
+        parsedData: response.data.results,
+      });
+    })
+    .catch(function (err) {
+      next(err);
+    });
+});
+
 module.exports = router;
