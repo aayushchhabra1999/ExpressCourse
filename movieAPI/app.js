@@ -7,8 +7,8 @@ const helmet = require('helmet');
 
 // routers
 var indexRouter = require('./routes/index');
-const movieRouter = require('./routes/movie')
-const searchRouter = require('./routes/search')
+const movieRouter = require('./routes/movie');
+const searchRouter = require('./routes/search');
 
 var app = express();
 app.use(helmet());
@@ -23,17 +23,25 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => {
+  if (req.query.api_key != 123456789) {
+    res.status(401);
+    res.json('Invalid API Key!');
+  }
+  next();
+});
+
 app.use('/', indexRouter);
 app.use('/movie', movieRouter);
 app.use('/search', searchRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

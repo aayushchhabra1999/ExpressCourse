@@ -8,9 +8,6 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/most_popular', function (req, res, next) {
-  if (req.query.api_key != 123456789) {
-    res.json('Invalid API Key!');
-  }
   let page = req.query.page || 1;
   let startIndex = (page - 1) * PAGE_LENGTH;
   let results = movies.filter((d) => d.most_popular);
