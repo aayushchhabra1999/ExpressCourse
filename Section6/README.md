@@ -1,0 +1,92 @@
+## Methods to maintain State
+
+- HTTP is stateless.
+- There are two ways to maintain state:
+  - Through **cookies**.
+    - Cookies are stored on the client side (in the browser).
+    - Whenever the client makes a request, the cookies are sent along with it.
+  - Through **session variables**.
+    - Session variables are stored on the server.
+    - Client is handed of a key to help identify those variables in subsequent requests.
+
+`res.cookie(key, value, {options})` is used to set cookies.
+
+---
+
+## Accessing Cookies
+
+- Cookies are sent inside the header of the request.
+
+- Use the cookie-parser middleware which will parse the cookies from the head and place them on `req.cookies`.
+
+- `req.cookies` now contains all the cookies.
+
+- Use `req.cookies.<key>` to access a specific cookie.
+
+---
+
+## Removing Cookies
+
+- `res.clearCookie(key, {options})` will clear the cookie with the given key from the users system (that we added as part of this domain).
+
+- Always a good idea to clear the space and clear out any sensitive information.
+
+---
+
+`res.redirect` is used to send the user to some other url.
+
+_Example of a USECASE_
+
+```language
+app.post('/process_login', (req, res, next) {
+    if (case 1) {
+        // do some stuff
+        res.redirect('/path1');
+    } else if (case 2){
+        // do some other stuff
+        res.redirect('/path2');
+    } else {
+        // do default stuff
+        res.redirect('/path3')
+    }
+})
+```
+
+---
+## Query String
+
+1. Query Strings are extra variables added at the end of a url.
+2. This is not a secure form of transmitting data. (Use body with https for that).
+3. '**?**' seperates the path from the query string.
+3. '**&**' seperates the key=value pairs.
+
+`req.query` contains the list of all the query strings parsed as key value pairs.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
